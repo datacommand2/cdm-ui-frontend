@@ -1,0 +1,44 @@
+{
+    "compilerOptions": {
+        "target": "es2017",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "esnext",
+
+        /* Linting */
+        "strict": true,
+        "noFallthroughCasesInSwitch": true,
+
+        /* Bunlder mode */
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "noEmit": true,
+        "jsx": "react-jsx",
+        "baseUrl": ".",
+        "paths": {
+            /* root */
+            "@/*": ["src/*"],
+            /* src/api/* */
+            "@api/*": ["src/api/*"],
+            /* src/app/* */
+            "@component/*": ["src/app/component/*"],
+            "@modules/*": ["src/app/modules/*"],
+            "@pages/*": ["src/app/pages/*"],
+            /* src/* */
+            "@constant/*": ["src/constant/*"],
+            "@fonts/*": ["src/fonts/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@libs/*": ["src/libs/*"],
+            "@mocks/*": ["src/mocks/*"],
+            "@recoil/*": ["src/recoil/*"],
+            "@styles/*": ["src/styles/*"],
+        }
+    },
+    "include": ["src"],
+    "types": ["vite/client", "node"]
+}

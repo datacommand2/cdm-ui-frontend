@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cdm-ui-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cdm-ui-frontend
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        app: cdm-ui-frontend
+        tier: frontend
+    spec:
+      #serviceAccount: "micro-services"
+      containers:
+        - name: cdm-ui-frontend
+          image: registry.datacommand.co.kr/cdm-ui-frontend:v1.0.0-rc4
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8443
+      restartPolicy: Always
+---
+# 클러스터 외부에서 접속 가능하고 백엔드로의 요청을 포록시하여 백엔드에 연결
+# 백엔드에 지정된 DNS 이름을 사용하여 백엔드 워커 파드에 요청을 보낸다
+# DNS 이름은 deployment_node.yaml 파일의 name 필드 값 : cdm-ui-backend
+apiVersion: v1
+kind: Service
+metadata:
+  name: cdm-ui-frontend
+spec:
+  # type: LoadBalancer
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 8443
+      targetPort: 8443
+      nodePort: 30001
+  selector:
+    app: cdm-ui-frontend
+    tier: frontend
