@@ -1,11 +1,11 @@
 import { FormControl, FormLabel, OutlinedInput, InputAdornment, Typography, useTheme } from '@mui/material';
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { findLastWord } from '../../../../libs/utils/commonFunction';
 
 interface DisabledFormTextFieldProps {
     required?: boolean;
-    label?: string;
+    label?: string | ReactNode;
     value: string | number | undefined;
     name: string;
     state?: string;
