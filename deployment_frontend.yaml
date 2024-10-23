@@ -14,13 +14,13 @@ spec:
         app: cdm-ui-frontend
         tier: frontend
     spec:
-      #serviceAccount: "micro-services"
+      serviceAccount: datacommand
       containers:
         - name: cdm-ui-frontend
-          image: registry.datacommand.co.kr/cdm-ui-frontend:v1.0.0-rc4
+          image: datacommand2/cdm-ui-frontend:shinhansec-PoC-v1.1.0-pre.1
           imagePullPolicy: Always
           ports:
-            - containerPort: 8443
+            - containerPort: 80
       restartPolicy: Always
 ---
 # 클러스터 외부에서 접속 가능하고 백엔드로의 요청을 포록시하여 백엔드에 연결
